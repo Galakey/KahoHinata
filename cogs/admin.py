@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 import os
 
@@ -57,6 +58,11 @@ class Admin(commands.Cog):
             if filename.endswith(".py"):
                 cogs.append(filename)
         await ctx.send(f"Found the following cogs: {str(cogs)[1:-1]}")
+
+    @commands.is_owner()
+    @commands.command(hidden=True, help="Set channel ID for selected method.,")
+    async def setchannel(self, ctx, method: str, channel: discord.channel.TextChannel):
+        pass
 
 
 async def setup(bot):
